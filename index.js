@@ -7,6 +7,7 @@ const studentsrouter = require('./Controllers/Students.controller')
 const  mentorrouter = require("./Controllers/Teachers.controller")
 const cors = require('cors')
 const env = require("dotenv")
+const mongoosee = require('mongoose')
 
 env.config()
 nodeservers.use(cors())
@@ -14,7 +15,7 @@ nodeservers.use(cors())
 nodeservers.use(bodyparser.json())
 nodeservers.use(bodyparser.urlencoded({extended:true}))
 
-require('./dbconnection')
+// require('./dbconnection')
 
   nodeservers.use("/student", studentsrouter)
 
@@ -25,7 +26,14 @@ nodeservers.listen(port, 'localhost',()=>{
     console.log("server is running under port no",port)
 })
 
-module.exports = nodeservers
+mongoosee.connect(process.env.db).then(()=>{
+console.log("db connected")
+
+})
+.catch((error)=>{
+  console.log(error);
+})
+// module.exports = nodeservers
 
 
 
