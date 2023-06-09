@@ -6,10 +6,10 @@ const nodeservers = express()
 const studentsrouter = require('./Controllers/Students.controller')
 const  mentorrouter = require("./Controllers/Teachers.controller")
 const cors = require('cors')
-const env = require("dotenv")
+const env = require("dotenv").config()
 const mongoosee = require('mongoose')
 
-env.config()
+
 nodeservers.use(cors())
 
 nodeservers.use(bodyparser.json())
