@@ -22,7 +22,7 @@ nodeservers.use(bodyparser.urlencoded({extended:true}))
   nodeservers.use ("/mentor",mentorrouter)
 
 const port = 4000
-nodeservers.listen(port, 'localhost',()=>{
+nodeservers.listen(port,()=>{
     console.log("server is running under port no",port)
 })
 
